@@ -5,6 +5,7 @@ type: software
 authors:
   - family-names: Li
     given-names: Jincheng
+    orcid: "https://orcid.org/0009-0001-3100-5272"
 version: 1.0.0
 date-released: 2026-08-09
 repository-code: "https://github.com/lijincheng494gmail/riec-core"
@@ -19,5 +20,6 @@ preferred-citation:
   authors:
     - family-names: Li
       given-names: Jincheng
+      orcid: "https://orcid.org/0009-0001-3100-5272"
   year: 2026
   doi: 10.2139/ssrn.7264499
