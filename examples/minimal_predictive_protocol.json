@@ -1,0 +1,110 @@
+{
+  "protocol_id": "synthetic.predictive.minimum",
+  "protocol_version": "0.1.0",
+  "schema_version": "0.1.0",
+  "task_family": "predictive_selection",
+  "evidence_subset": {
+    "version": "0.1.0",
+    "source_ids": ["synthetic-source"],
+    "inclusion_rule_ids": ["include-all-artificial"],
+    "exclusion_rule_ids": [],
+    "diagnostic_only_source_ids": [],
+    "scientific_status": "VERIFIED"
+  },
+  "target": {
+    "version": "0.1.0",
+    "target_id": "synthetic-target",
+    "target_kind": "prediction_target",
+    "unit": "arbitrary_unit",
+    "scale": "continuous",
+    "support": {
+      "version": "0.1.0",
+      "population": "artificial-fixture",
+      "inclusion_summary": "all four synthetic records",
+      "exclusion_summary": "none"
+    },
+    "horizon": "one synthetic step",
+    "feature_context_id": "synthetic-features-v1",
+    "allowed_claims": ["contract_behavior_only"],
+    "prohibited_claims": ["scientific_performance"],
+    "scientific_status": "VERIFIED"
+  },
+  "independent_unit": {
+    "version": "0.1.0",
+    "unit_type": "synthetic_group",
+    "key_fields": ["group_id"],
+    "nesting_fields": [],
+    "relation_model": "grouped",
+    "unresolved_identity": false,
+    "unresolved_reason_codes": []
+  },
+  "deployment_unit": {
+    "version": "0.1.0",
+    "unit_type": "unseen_synthetic_group",
+    "key_fields": ["group_id"],
+    "nesting_fields": [],
+    "relation_model": "grouped",
+    "unresolved_identity": false,
+    "unresolved_reason_codes": []
+  },
+  "preprocessing_validation": {
+    "version": "0.1.0",
+    "preprocessing_contract": "identity-only",
+    "learned_steps": [],
+    "fit_scope": "fold_local",
+    "split_contract": "synthetic-held-out-group",
+    "tuning_contract": "none",
+    "leakage_controls": ["group-disjoint"],
+    "authority": "formal",
+    "split_fingerprint": null
+  },
+  "method": {
+    "version": "0.1.0",
+    "analysis_type": "predictive_candidate_library",
+    "library_id": "synthetic-library-v1",
+    "method_ids": ["candidate-a", "candidate-b"],
+    "baseline_ids": ["candidate-a"]
+  },
+  "uncertainty_provenance": {
+    "version": "0.1.0",
+    "uncertainty_type": "synthetic-standard-error",
+    "source_class": "resampling",
+    "derivation_id": "fixture-only",
+    "assumptions": ["not scientific data"],
+    "missingness_policy": "not-allowed",
+    "eligible_uses": ["contract-test"],
+    "scientific_status": "VERIFIED"
+  },
+  "decision_weighting": {
+    "version": "0.1.0",
+    "mode": "decision_costs",
+    "policy_id": "synthetic-order-v1",
+    "parameter_refs": ["complexity", "deployment_burden"]
+  },
+  "domain_constraints": {
+    "version": "0.1.0",
+    "rule_registry_id": "synthetic-rules-v1",
+    "rule_ids": ["finite-values"],
+    "calibration_domain_id": null,
+    "expert_review_required": false
+  },
+  "translation_rule": {
+    "version": "0.1.0",
+    "action_vocabulary_version": "0.1.0",
+    "policy_id": "synthetic-translation-v1",
+    "reason_code_namespace": "SYNTHETIC",
+    "allowed_actions": ["SELECT", "SELECT_WITH_CONDITIONS", "FALLBACK_SELECT", "ABSTAIN"]
+  },
+  "source_provenance": {
+    "version": "0.1.0",
+    "source_manifest_id": "synthetic-manifest-v1",
+    "source_hashes": [["synthetic-source", "0000000000000000000000000000000000000000000000000000000000000000"]],
+    "policy_id": "phase3-synthetic-only",
+    "freeze_id": "phase3-draft-not-frozen",
+    "amendment_id": null,
+    "lineage": ["NEW_ARCHITECTURE_PROPOSAL"],
+    "origin": "NEW_ARCHITECTURE_PROPOSAL"
+  },
+  "registration_status": "REGISTERED",
+  "origin": "NEW_ARCHITECTURE_PROPOSAL"
+}

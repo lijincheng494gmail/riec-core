@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/compatibility/v0.9-to-v1-rc/1.0.0-rc.2",
+  "title": "RIEC-Core v0.9 to v1 RC Migration Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["migration_id", "source_version", "target_version", "source_artifact_hash", "source_v0_9_hash", "transformations", "missing_field_policy", "scientific_values_changed", "canonical_decision_changed", "negative_results_retained", "rollback_pointer"],
+  "properties": {
+    "migration_id": {"type": "string", "minLength": 1},
+    "source_version": {"const": "0.9"},
+    "target_version": {"const": "1.0.0-rc.2"},
+    "source_artifact_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_v0_9_hash": {"const": "642715f29d92d27b564a74d267054e0f595bf0162bc39568bff4fda3d4fdc4f1"},
+    "transformations": {"type": "array", "items": {"type": "object"}},
+    "missing_field_policy": {"enum": ["NOT_RECORDED", "UNKNOWN", "NOT_EVALUABLE"]},
+    "scientific_values_changed": {"const": false},
+    "canonical_decision_changed": {"const": false},
+    "negative_results_retained": {"const": true},
+    "rollback_pointer": {"const": "CANONICAL_V0_9"}
+  }
+}

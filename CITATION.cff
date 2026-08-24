@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "Please cite the RIEC-Core preprint when using this public projection."
+title: "RIEC-Core v1.0: public frozen-governance projection"
+type: software
+authors:
+  - family-names: Li
+    given-names: Jincheng
+version: 1.0.0
+date-released: 2026-08-09
+repository-code: "https://github.com/lijincheng494gmail/riec-core"
+keywords:
+  - analytic multiplicity
+  - research governance
+  - scientific claims
+  - reproducibility
+preferred-citation:
+  type: article
+  title: "RIEC-Core: Auditing Analytic Multiplicity and Governing Scientific Claims Across Heterogeneous Research Protocols"
+  authors:
+    - family-names: Li
+      given-names: Jincheng
+  year: 2026
+  doi: 10.2139/ssrn.7264499

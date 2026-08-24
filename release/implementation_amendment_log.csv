@@ -1,0 +1,3 @@
+amendment_id,timestamp_utc,change_id,before_sha256,after_sha256,reason,affected_tests,scientific_semantics_changed
+IA-001,2026-08-09T17:13:33Z,V1C-010,ebabb517fe293324d4b564f8f3141da0ae21a153a313a106f1a45763e44f07d7,42180110f5bac8223bfa4ece494d615d81817e440aa1e36acd6fa78fe41df6ae,Correct integration assertion to the frozen migration-schema field scientific_values_changed,test_schema_and_migration_mark_scientific_change_false,NO
+IA-002,2026-08-09T17:16:42Z,V1C-010,12b1c12dc42b2f9b2943103157e3fdb940fb62a4433c6ea40fd67cf06fe651fa,171993c0c0dbb2e680769410badc28b5bd394ae0008f3abdfdb1e049826ad278,Advance release identity from planned rc.1 to rc.2 after IA-001 as required by version policy,release identity schema examples metadata and version tests,NO

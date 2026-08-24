@@ -1,0 +1,9 @@
+{
+  "config_id": "phase3-synthetic-microtests",
+  "config_version": "0.1.0",
+  "origin": "CONFIGURATION",
+  "truth_source": "ARTIFICIAL_FIXTURE",
+  "maximum_records_per_fixture": 8,
+  "historical_data_allowed": false,
+  "formal_scientific_claims_allowed": false
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/protocol/0.1.0",
+  "title": "RIEC-Core Protocol",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "protocol_id", "protocol_version", "schema_version", "task_family",
+    "evidence_subset", "target", "independent_unit", "deployment_unit",
+    "preprocessing_validation", "method", "uncertainty_provenance",
+    "decision_weighting", "domain_constraints", "translation_rule",
+    "source_provenance", "registration_status", "origin"
+  ],
+  "properties": {
+    "protocol_id": {"type": "string", "minLength": 1},
+    "protocol_version": {"type": "string", "pattern": "^[0-9]+\\.[0-9]+(\\.[0-9]+)?(-[A-Za-z0-9.-]+)?$"},
+    "schema_version": {"type": "string", "const": "0.1.0"},
+    "task_family": {"enum": ["predictive_selection", "evidence_synthesis"]},
+    "evidence_subset": {"$ref": "#/$defs/evidenceSubset"},
+    "target": {"$ref": "#/$defs/targetIdentity"},
+    "independent_unit": {"$ref": "#/$defs/unitDeclaration"},
+    "deployment_unit": {"$ref": "#/$defs/unitDeclaration"},
+    "preprocessing_validation": {"type": "object"},
+    "method": {"type": "object"},
+    "uncertainty_provenance": {"type": "object"},
+    "decision_weighting": {"type": "object"},
+    "domain_constraints": {"type": "object"},
+    "translation_rule": {"type": "object"},
+    "source_provenance": {"type": "object"},
+    "registration_status": {"enum": ["UNREGISTERED", "REGISTERED", "QUARANTINED", "REJECTED"]},
+    "origin": {"enum": ["HISTORICAL_FACT", "NEW_ARCHITECTURE_PROPOSAL", "CONFIGURATION", "RUNTIME_RESULT"]}
+  },
+  "$defs": {
+    "evidenceSubset": {
+      "type": "object",
+      "required": ["version", "source_ids", "inclusion_rule_ids", "exclusion_rule_ids", "diagnostic_only_source_ids", "scientific_status"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {"type": "string"},
+        "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string"}},
+        "inclusion_rule_ids": {"type": "array", "items": {"type": "string"}},
+        "exclusion_rule_ids": {"type": "array", "items": {"type": "string"}},
+        "diagnostic_only_source_ids": {"type": "array", "items": {"type": "string"}},
+        "scientific_status": {"type": "string"}
+      }
+    },
+    "targetIdentity": {
+      "type": "object",
+      "required": ["version", "target_id", "target_kind", "unit", "scale", "support", "horizon", "feature_context_id", "allowed_claims", "prohibited_claims", "scientific_status"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {"type": "string"},
+        "target_id": {"type": "string", "minLength": 1},
+        "target_kind": {"type": "string", "minLength": 1},
+        "unit": {"type": ["string", "null"]},
+        "scale": {"type": "string"},
+        "support": {"type": "object"},
+        "horizon": {"type": ["string", "null"]},
+        "feature_context_id": {"type": ["string", "null"]},
+        "allowed_claims": {"type": "array", "items": {"type": "string"}},
+        "prohibited_claims": {"type": "array", "items": {"type": "string"}},
+        "scientific_status": {"type": "string"}
+      }
+    },
+    "unitDeclaration": {
+      "type": "object",
+      "required": ["version", "unit_type", "key_fields", "nesting_fields", "relation_model", "unresolved_identity", "unresolved_reason_codes"],
+      "additionalProperties": false,
+      "properties": {
+        "version": {"type": "string"},
+        "unit_type": {"type": "string", "minLength": 1},
+        "key_fields": {"type": "array", "items": {"type": "string"}},
+        "nesting_fields": {"type": "array", "items": {"type": "string"}},
+        "relation_model": {"type": "string"},
+        "unresolved_identity": {"type": "boolean"},
+        "unresolved_reason_codes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

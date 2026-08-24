@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/audit-bundle/0.1.0",
+  "title": "RIEC-Core Audit Bundle Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["bundle_id", "bundle_version", "run_manifest_hash", "protocol_checksums", "gate_snapshot_hashes", "action_ids", "metric_ids", "provenance_record_ids", "files", "canonical"],
+  "properties": {
+    "bundle_id": {"type": "string", "minLength": 1},
+    "bundle_version": {"type": "string"},
+    "run_manifest_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "protocol_checksums": {"type": "array", "items": {"type": "string"}},
+    "gate_snapshot_hashes": {"type": "array", "items": {"type": "string"}},
+    "action_ids": {"type": "array", "items": {"type": "string"}},
+    "metric_ids": {"type": "array", "items": {"type": "string"}},
+    "provenance_record_ids": {"type": "array", "items": {"type": "string"}},
+    "files": {"type": "array", "items": {"type": "object"}},
+    "canonical": {"type": "boolean"}
+  }
+}

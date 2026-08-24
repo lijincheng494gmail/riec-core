@@ -1,0 +1,10 @@
+{
+  "config_id": "neural-lockbox-phase3",
+  "config_version": "0.1.0",
+  "origin": "CONFIGURATION",
+  "status": "LOCKBOX_NOT_OPENED",
+  "data_accessed": false,
+  "oracle_accessed": false,
+  "predictions_generated": false,
+  "retuning_allowed": false
+}

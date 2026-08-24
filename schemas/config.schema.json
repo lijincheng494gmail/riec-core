@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/config/0.1.0",
+  "title": "RIEC-Core Strict Configuration Envelope",
+  "type": "object",
+  "required": ["config_id", "config_version", "origin"],
+  "properties": {
+    "config_id": {"type": "string", "minLength": 1},
+    "config_version": {"type": "string", "minLength": 1},
+    "origin": {"const": "CONFIGURATION"}
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "config_id": "riec-core-phase3-development",
+  "config_version": "0.1.0",
+  "origin": "CONFIGURATION",
+  "architecture_status": "PASS_WITH_WARNINGS",
+  "implementation_mode": "SKELETON_AND_SYNTHETIC_CONTRACTS_ONLY",
+  "freeze_ready": false,
+  "historical_benchmarks_allowed": false,
+  "formal_benchmark_allowed": false
+}

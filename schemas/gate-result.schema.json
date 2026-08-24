@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/gate-result/0.1.0",
+  "title": "RIEC-Core GateResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["gate_id", "gate_version", "state", "reason_code", "evidence_refs", "affected_actions", "repairability", "timestamp", "config_hash", "permitted_actions", "conditions", "origin"],
+  "properties": {
+    "gate_id": {"type": "string", "pattern": "^G[0-6]$"},
+    "gate_version": {"type": "string"},
+    "state": {"enum": ["PASS", "WARN", "FAIL", "NOT_EVALUABLE"]},
+    "reason_code": {"type": "string", "minLength": 1},
+    "evidence_refs": {"type": "array", "items": {"type": "string"}},
+    "affected_actions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "repairability": {"type": "string"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "config_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "permitted_actions": {"type": "array", "items": {"type": "string"}},
+    "conditions": {"type": "array", "items": {"type": "string"}},
+    "origin": {"const": "RUNTIME_RESULT"}
+  }
+}

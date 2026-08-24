@@ -1,0 +1,28 @@
+{
+  "config_id": "phase2-inheritance-disposition",
+  "config_version": "0.1.0",
+  "origin": "CONFIGURATION",
+  "source": "external://RIEC_CORE_INHERITANCE_QUARANTINE.csv",
+  "counts": {
+    "SAFE_TO_INHERIT": 17,
+    "REQUIRES_RECONCILIATION": 8,
+    "DOMAIN_ONLY": 11,
+    "DO_NOT_INHERIT": 6
+  },
+  "active_universal_candidates": [
+    "IQ-F01", "IQ-F06", "IQ-F07", "IQ-F10",
+    "IQ-D01", "IQ-D02", "IQ-D03", "IQ-D04", "IQ-D05", "IQ-D11", "IQ-D12",
+    "IQ-E01", "IQ-E02", "IQ-E05", "IQ-E06", "IQ-E09",
+    "IQ-FI01"
+  ],
+  "requires_reconciliation": [
+    "IQ-F03", "IQ-D09", "IQ-D10", "IQ-E13", "IQ-E14", "IQ-E15", "IQ-FI02", "IQ-FI03"
+  ],
+  "domain_only": [
+    "IQ-F02", "IQ-F04", "IQ-F08", "IQ-D07", "IQ-E03", "IQ-E04", "IQ-E07", "IQ-E08", "IQ-E10", "IQ-E11", "IQ-FI04"
+  ],
+  "do_not_inherit": [
+    "IQ-F05", "IQ-F09", "IQ-D06", "IQ-D08", "IQ-E12", "IQ-FI05"
+  ],
+  "activation_rule": "Only active_universal_candidates may inform generic interfaces; no historical numerical policy is activated."
+}

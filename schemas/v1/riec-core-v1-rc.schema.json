@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/core/1.0.0-rc.2",
+  "title": "RIEC-Core v1.0 Release Candidate Governance Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["identity", "protocol", "gate_results", "action", "audit"],
+  "properties": {
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["core_version", "status", "source_v0_9_hash", "changeset_freeze_hash"],
+      "properties": {
+        "core_version": {"const": "1.0.0-rc.2"},
+        "status": {"const": "RELEASE_CANDIDATE_NOT_FROZEN"},
+        "source_v0_9_hash": {"const": "642715f29d92d27b564a74d267054e0f595bf0162bc39568bff4fda3d4fdc4f1"},
+        "changeset_freeze_hash": {"const": "c12ddd44a648774dd9f941beb4489d3eaf275c258b0bbd6d82a9a646898a3142"}
+      }
+    },
+    "protocol": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter_lifecycle", "validation_audit_reference", "metric_contracts", "threshold_registry"],
+      "properties": {
+        "adapter_lifecycle": {"enum": ["MIGRATION_SCAFFOLD", "NOT_STARTED", "LOCKBOX_NOT_OPENED", "DEVELOPMENT_READY", "DEVELOPMENT_VALIDATED"]},
+        "validation_audit_reference": {"type": ["string", "null"]},
+        "metric_contracts": {"type": "array", "items": {"$ref": "#/$defs/metricContract"}},
+        "threshold_registry": {"type": "array", "items": {"$ref": "#/$defs/thresholdRecord"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"adapter_lifecycle": {"const": "DEVELOPMENT_VALIDATED"}}},
+          "then": {"properties": {"validation_audit_reference": {"type": "string", "minLength": 1}}}
+        }
+      ]
+    },
+    "gate_results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gate_id", "state", "candidate_validity", "primary_event", "conditions"],
+        "properties": {
+          "gate_id": {"enum": ["G0", "G1", "G2", "G3", "G4", "G5", "G6"]},
+          "state": {"enum": ["PASS", "WARN", "FAIL", "NOT_EVALUABLE"]},
+          "candidate_validity": {"$ref": "#/$defs/candidateValidity"},
+          "primary_event": {"type": ["string", "null"]},
+          "conditions": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base_action", "qualification", "conditions", "legacy_serialized_action"],
+      "properties": {
+        "base_action": {"enum": ["SELECT", "RESOLVE", "STRATIFY", "DOWNGRADE", "ABSTAIN", "FALLBACK_SELECT", "DIAGNOSTIC_ONLY"]},
+        "qualification": {"enum": ["NONE", "WITH_CONDITIONS"]},
+        "conditions": {"type": "array", "items": {"type": "string"}},
+        "legacy_serialized_action": {"type": ["string", "null"]}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"qualification": {"const": "WITH_CONDITIONS"}}},
+          "then": {
+            "properties": {
+              "base_action": {"const": "SELECT"},
+              "conditions": {"minItems": 1},
+              "legacy_serialized_action": {"const": "SELECT_WITH_CONDITIONS"}
+            }
+          }
+        }
+      ]
+    },
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_hashes", "gate_snapshot", "negative_results_retained", "amendment_ids", "post_waiver_boundary_hash", "claims"],
+      "properties": {
+        "source_hashes": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        },
+        "gate_snapshot": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "negative_results_retained": {"const": true},
+        "amendment_ids": {"type": "array", "items": {"type": "string"}},
+        "post_waiver_boundary_hash": {"const": "0c51a2877d34bb69165d8b77acffe8534836a5c2e54913f780498da17ca909cf"},
+        "claims": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "BOUNDED_TYPED_GOVERNANCE",
+              "FOUR_DEVELOPMENT_DOMAIN_EVIDENCE",
+              "MIXED_AND_DOMAIN_DEPENDENT_BEHAVIOR",
+              "NEGATIVE_AND_MISSING_RESULTS_RETAINED"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "metricContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric_or_loss_id", "metric_exists", "applicability", "validity", "aggregation_eligibility", "aggregation_rule", "undefined_handling", "risk_functional"],
+      "properties": {
+        "metric_or_loss_id": {"type": "string", "minLength": 1},
+        "metric_exists": {"type": ["boolean", "null"]},
+        "applicability": {"enum": ["EVALUABLE", "NOT_EVALUABLE", "SECONDARY_ONLY", "DIAGNOSTIC_ONLY", "NOT_RECORDED"]},
+        "validity": {"enum": ["VALID", "INVALID", "NOT_EVALUABLE", "NOT_RECORDED"]},
+        "aggregation_eligibility": {"enum": ["INCLUDE", "EXCLUDE_UNDEFINED_ONLY", "EXCLUDE_INVALID", "NOT_RECORDED"]},
+        "aggregation_rule": {"type": "string", "minLength": 1},
+        "undefined_handling": {"type": "string", "minLength": 1},
+        "risk_functional": {"type": ["string", "null"]}
+      }
+    },
+    "candidateValidity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fit_status", "finite_output", "optimizer_status", "warning_codes", "adapter_validity_state", "adapter_policy_id", "notes"],
+      "properties": {
+        "fit_status": {"type": "string"},
+        "finite_output": {"type": ["boolean", "null"]},
+        "optimizer_status": {"enum": ["CONVERGED", "WARNING", "FAILED", "NOT_APPLICABLE", "NOT_REPORTED"]},
+        "warning_codes": {"type": "array", "items": {"type": "string"}},
+        "adapter_validity_state": {"enum": ["PASS", "WARN", "FAIL", "NOT_EVALUABLE"]},
+        "adapter_policy_id": {"type": "string", "minLength": 1},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "thresholdRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["threshold_id", "owner", "scope", "value", "provenance", "sensitivity_status", "change_authority", "universal_across_domains"],
+      "properties": {
+        "threshold_id": {"type": "string"},
+        "owner": {"enum": ["CORE_STRUCTURAL", "ENGINE", "ADAPTER"]},
+        "scope": {"type": "string"},
+        "value": {},
+        "provenance": {"type": "string"},
+        "sensitivity_status": {"type": "string"},
+        "change_authority": {"type": "string"},
+        "universal_across_domains": {"const": false}
+      }
+    }
+  }
+}

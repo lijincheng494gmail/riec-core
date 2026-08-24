@@ -1,0 +1,37 @@
+manifest_id: RIEC_CORE_V1_0_RC_MANIFEST_V1
+run_id: rc_20260809T165852Z
+version: 1.0.0-rc.2
+original_planned_version: 1.0.0-rc.1
+version_bump_authority: IA-002
+release_status: RELEASE_CANDIDATE_NOT_FROZEN
+core_v1_frozen: false
+canonical_v0_9_mutated: false
+historical_records_mutated: false
+new_scientific_experiment: false
+new_training: false
+new_prediction: false
+neuro_lockbox_touched: false
+canonical_v0_9_checksum_ledger_sha256: 642715f29d92d27b564a74d267054e0f595bf0162bc39568bff4fda3d4fdc4f1
+changeset_freeze_sha256: c12ddd44a648774dd9f941beb4489d3eaf275c258b0bbd6d82a9a646898a3142
+phase8_candidate_spec_sha256: 60f934414dd4dc6abede016ef8e00806311e65dcabfcd848cc1cff10ad3e8762
+phase8_candidate_schema_sha256: 3426ad8c60dcb384f372dc79066a4efbbddf0840094f8587d6d933470a613139
+phase8_rule_matrix_sha256: 546716a3f1032341194015310a9e0d9c08b46724bf08e757c497e126b9fbb815
+chem_001_sha256: a4e8b5c92481e7d9a8987dfc5a8c088b0dfb74c956d8d504c82b1a3da1e400e6
+post_waiver_boundary_sha256: 0c51a2877d34bb69165d8b77acffe8534836a5c2e54913f780498da17ca909cf
+candidate_changes_planned: 10
+candidate_changes_integrated: 10
+old_tests_expected: 98
+new_v1_rc_tests_expected: 46
+integration_tests_expected: 10
+historical_decisions_changed_without_authorization: 0
+rollback_mode: NON_DESTRUCTIVE_CONSUMER_POINTER
+file_manifest_policy:
+  scope: ALL_PACKAGE_FILES_EXCEPT_FILE_MANIFEST_AND_CHECKSUM_LEDGER
+  excluded:
+    - release/RIEC_CORE_V1_0_RC_FILE_MANIFEST.csv
+    - release/RIEC_CORE_V1_0_RC_CHECKSUMS_SHA256.txt
+checksum_policy:
+  scope: ALL_PACKAGE_FILES_EXCEPT_CHECKSUM_LEDGER_ITSELF
+  excluded:
+    - release/RIEC_CORE_V1_0_RC_CHECKSUMS_SHA256.txt
+final_freeze_requires_separate_user_authorization: true

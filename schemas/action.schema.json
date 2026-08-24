@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://riec.local/schemas/action/0.1.0",
+  "title": "RIEC-Core Typed Action",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["context", "action", "family"],
+      "properties": {
+        "action": {"enum": ["SELECT", "SELECT_WITH_CONDITIONS", "FALLBACK_SELECT", "ABSTAIN", "DIAGNOSTIC_ONLY"]},
+        "family": {"enum": ["COMMIT", "BOUND", "NON_DECISION", "DIAGNOSTIC_ONLY"]}
+      }
+    },
+    {
+      "type": "object",
+      "required": ["context", "action", "family"],
+      "properties": {
+        "action": {"enum": ["RESOLVE", "STRATIFY", "DOWNGRADE", "ABSTAIN", "DIAGNOSTIC_ONLY"]},
+        "family": {"enum": ["COMMIT", "PARTITION", "BOUND", "NON_DECISION", "DIAGNOSTIC_ONLY"]}
+      }
+    }
+  ]
+}

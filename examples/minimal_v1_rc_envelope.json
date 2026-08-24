@@ -1,0 +1,34 @@
+{
+  "identity": {
+    "core_version": "1.0.0-rc.2",
+    "status": "RELEASE_CANDIDATE_NOT_FROZEN",
+    "source_v0_9_hash": "642715f29d92d27b564a74d267054e0f595bf0162bc39568bff4fda3d4fdc4f1",
+    "changeset_freeze_hash": "c12ddd44a648774dd9f941beb4489d3eaf275c258b0bbd6d82a9a646898a3142"
+  },
+  "protocol": {
+    "adapter_lifecycle": "MIGRATION_SCAFFOLD",
+    "validation_audit_reference": null,
+    "metric_contracts": [],
+    "threshold_registry": []
+  },
+  "gate_results": [],
+  "action": {
+    "base_action": "ABSTAIN",
+    "qualification": "NONE",
+    "conditions": [],
+    "legacy_serialized_action": "ABSTAIN"
+  },
+  "audit": {
+    "source_hashes": {
+      "canonical_v0_9": "642715f29d92d27b564a74d267054e0f595bf0162bc39568bff4fda3d4fdc4f1"
+    },
+    "gate_snapshot": "0000000000000000000000000000000000000000000000000000000000000000",
+    "negative_results_retained": true,
+    "amendment_ids": ["CORE-AMEND-CHEM-001"],
+    "post_waiver_boundary_hash": "0c51a2877d34bb69165d8b77acffe8534836a5c2e54913f780498da17ca909cf",
+    "claims": [
+      "BOUNDED_TYPED_GOVERNANCE",
+      "NEGATIVE_AND_MISSING_RESULTS_RETAINED"
+    ]
+  }
+}
