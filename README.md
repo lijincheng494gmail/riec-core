@@ -8,6 +8,14 @@ The accompanying preprint is:
 
 > Jincheng Li. **RIEC-Core: Auditing Analytic Multiplicity and Governing Scientific Claims Across Heterogeneous Research Protocols.** SSRN. https://doi.org/10.2139/ssrn.7264499
 
+## Manuscript status
+
+A later journal manuscript reframes the frozen system as a knowledge-based decision support architecture:
+
+> **A knowledge-based decision support system for governing evidence-to-claim transitions under analytical multiplicity**
+
+Submission status snapshot (3 September 2026): the Elsevier submission tracker listed this manuscript as **under review** at *Knowledge-Based Systems* (`KNOSYS-D-26-19947`). This is a dated submission-tracking status, not an acceptance claim. The SSRN record above is an earlier single-author, non-peer-reviewed version and is not represented as identical to the journal manuscript.
+
 ## Frozen status
 
 - final identity: `RIEC-Core v1.0`;
