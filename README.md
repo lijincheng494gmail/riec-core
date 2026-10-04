@@ -14,7 +14,11 @@ A later journal manuscript reframes the frozen system as a knowledge-based decis
 
 > **A knowledge-based decision support system for governing evidence-to-claim transitions under analytical multiplicity**
 
-Submission status snapshot (3 September 2026): the Elsevier submission tracker listed this manuscript as **under review** at *Knowledge-Based Systems* (`KNOSYS-D-26-19947`). This is a dated submission-tracking status, not an acceptance claim. The SSRN record above is an earlier single-author, non-peer-reviewed version and is not represented as identical to the journal manuscript.
+Status update recorded on 4 October 2026: this manuscript was **rejected after external review** at *Knowledge-Based Systems* (`KNOSYS-D-26-19947`), superseding the 3 September under-review snapshot. The author supplied the decision letter and four reviewer reports on 4 October; the supplied text does not show the editorial decision date. This is a rejection, not a revision invitation or an acceptance.
+
+The reviews distinguish consistent execution of declared rules from independent validation of the scientific judgments encoded in those rules. They also question the architecture's added value over a strong simpler governance workflow and request closer novelty comparisons with evidence-to-decision and evidence-assessment frameworks. Neural prediction improvements over a training-mean reference do not by themselves establish the contribution of the governance layer. A [public-safe review matrix](https://github.com/lijincheng494gmail/riec-research-portfolio/blob/main/review_history/KBS_CORE_REVIEW_MATRIX.md) records both recognized strengths and unresolved concerns; raw correspondence is not redistributed.
+
+This documentation update does not change the frozen v1.0 scientific/runtime payload or claim that the review concerns have been resolved. The SSRN record above remains an earlier single-author, non-peer-reviewed version and is not represented as identical to the journal manuscript.
 
 ## Frozen status
 
